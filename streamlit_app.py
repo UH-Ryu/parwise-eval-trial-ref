@@ -19,7 +19,7 @@ OUTPUTS_DIR = os.path.join(BASE_DIR, "data", "outputs")
 PERSONA_FILE = os.path.join(BASE_DIR, "data", "persona_sample.jsonl")
 SEEN_TEST_FILE = os.path.join(BASE_DIR, "data", "seen_test.jsonl")
 SPREADSHEET_URL = st.secrets["SPREADSHEET_URL"]  # スプレッドシートのURLを環境変数から取得
-SHEET_NAME = "シート1"  # シート名
+SHEET_NAME = "シート3"  # シート名
 SEED = 42 
 # シード値を固定することで毎回同じサンプルが選ばれるようにする
 random.seed(SEED)
@@ -190,7 +190,7 @@ def create_rounded_box(content, bg_color="lightgray", text_color="black",
 
 def display_conversation(context_data):
     """会話履歴を表示する関数"""
-    st.markdown("### 対話履歴")
+    st.markdown("#### 対話履歴")
     
     # JSONLからのデータを適切な形式に変換
     messages = []
@@ -228,7 +228,7 @@ def display_response_options(page, model_pair, model_responses, conversation):
     speaker = conversation.get("speaker", "")
     # st.write(f"この対話に続く{speaker}の応答として、どちらがより自然か評価してください。")
     # st.write(f"この対話に続く{speaker}の応答について、どちらの応答によりキャラクター情報が反映されているか評価してください。")
-    st.write(f"この対話に続く{speaker}の応答として、どちらが正解応答により近いか評価してください。")
+    st.markdown(f"##### この対話に続く{speaker}の応答として、どちらが正解応答により近いか評価してください。")
 
     model_a, model_b = model_pair
     response_a = find_response_for_context(model_responses[model_a], page)
